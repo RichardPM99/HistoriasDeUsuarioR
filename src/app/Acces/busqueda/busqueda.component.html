@@ -1,0 +1,43 @@
+<div class="content {{storedTheme}}" role="main">
+    <div (click)="authService.logoutFirebase()" class="content-box" ><i class="fas fa-door-open" ></i>&nbsp;Salir</div>
+    <div class="theme-switcher-wrap">
+        <label  [ngClass]="(storedTheme === 'theme-dark')?'theme-switcher active' : 'theme-switcher'" (click)="setTheme()">
+            <div class="switcher-path">
+                <div class="switcher-handle"></div>
+                <i class="fas fa-brush text-center content-box"></i>
+            </div>
+        </label>
+    </div>
+
+    <div class="content-box">
+    <form [formGroup]="place" (ngSubmit)="search(place.value)">
+        <div class="text-center">  
+        <label for="exampleInputEmail1" class="labelMe ">Github Username</label>
+          <input type="text" placeholder="Github Username" class="form-control"  id="name" formControlName="name" aria-describedby="emailHelp">
+        </div>
+        <br>
+        <div class="text-center">
+        <button type="submit" class="btn btn-outline-success">Submit</button>
+        </div>
+      </form>
+      <br>
+      <br>
+      
+
+      <app-page-not-found *ngIf="error"></app-page-not-found>
+      
+      <div *ngIf="perfil && error === false" class="grid-col-2 text-center">
+          <div class="">
+              <img class="" style="width: 10%; height: auto; vertical-align: top; font-size: 0;" [src]="perfil.avatar_url" >
+              <p *ngIf="perfil.bio">{{perfil.bio}}</p>
+          </div>
+          <div class="">
+              <p *ngIf="perfil.name"><i class="fab fa-github"></i>&nbsp;&nbsp;{{perfil.name}}</p>
+              <p *ngIf="perfil.login"><i class="fab fa-github"></i>&nbsp;&nbsp;{{perfil.login}}</p>
+              <p *ngIf="perfil.public_repos"><i class="fas fa-book"></i>&nbsp;&nbsp;{{perfil.public_repos}} Repos</p>
+              <p *ngIf="perfil.followers"><i class="fas fa-users"></i>&nbsp;&nbsp;{{perfil.followers}} Follower</p>
+          </div>
+      </div>
+
+    </div>
+</div>

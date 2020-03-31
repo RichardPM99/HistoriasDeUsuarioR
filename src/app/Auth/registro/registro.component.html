@@ -1,0 +1,10 @@
+<div class="login-page">
+    <div class="form">
+      <form class="login-form">
+        <input type="email" placeholder="Correo" #user />
+        <input type="password" placeholder="password" #password />
+        <button [routerLink]="['/login']" routerLinkActive="router-link-active"  (click)="authService.registroFirebase(user.value, password.value)">create</button>
+        <p class="message">Already registered? <a [routerLink]="['/login']" routerLinkActive="router-link-active" >Sign In</a></p>
+      </form>
+    </div>
+  </div>

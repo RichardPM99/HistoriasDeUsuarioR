@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>HistoriasDeUsuarioR</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root></app-root>
+  <script>
+    var checkbox = document.querySelector('input[name=theme]');
+    
+    checkbox.addEventListener('change', function() {
+        if(this.checked) {
+            trans()
+            document.documentElement.setAttribute('data-theme', 'dark')
+        } else {
+            trans()
+            document.documentElement.setAttribute('data-theme', 'light')
+        }
+    })
+    
+    let trans = () => {
+        document.documentElement.classList.add('transition');
+        window.setTimeout(() => {
+            document.documentElement.classList.remove('transition')
+        }, 1000)
+    }
+    </script>
+</body>
+</html>
