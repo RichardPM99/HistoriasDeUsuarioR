@@ -10,7 +10,7 @@ export class ApiSearchService {
 
   constructor(private http: HttpClient) { }
 
-  apiSearch(name: string = ""): Observable<Profile> {
+  apiSearch(name: string = "RichardPM99"): Observable<Profile> {
     const url = `https://api.github.com/users/${name}`;
     return this.http.get<Profile>(url);
   }
